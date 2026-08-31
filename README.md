@@ -1,6 +1,8 @@
 # Adhil Ahammed K — Portfolio
 
-A modern, professional frontend developer portfolio built with **React + Vite + TypeScript**.
+🌐 **Live Site**: [adhilahammed.github.io/portfolio](https://adhilahammed.github.io/portfolio/)
+
+A modern, professional software developer portfolio built with **React + Vite + TypeScript**.
 
 ## 🚀 Tech Stack
 
