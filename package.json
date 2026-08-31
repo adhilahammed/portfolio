@@ -9,7 +9,7 @@
     "lint": "oxlint",
     "preview": "vite preview",
     "predeploy": "tsc -b && vite build",
-    "deploy": "gh-pages -d dist && git checkout main"
+    "deploy": "gh-pages -d dist --no-history"
   },
   "dependencies": {
     "lucide-react": "^1.38.0",
