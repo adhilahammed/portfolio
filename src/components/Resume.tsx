@@ -36,10 +36,26 @@ export default function Resume() {
         </div>
 
         <div className="resume-embed">
-          <iframe
-            src={personalInfo.resumeFile}
+          <object
+            data={personalInfo.resumeFile}
+            type="application/pdf"
+            width="100%"
+            height="100%"
             title="Adhil Ahammed K Resume"
-          />
+          >
+            <iframe
+              src={personalInfo.resumeFile}
+              title="Adhil Ahammed K Resume"
+            >
+              <p>
+                Your browser does not support PDF embedding. Please{" "}
+                <a href={personalInfo.resumeFile} target="_blank" rel="noopener noreferrer">
+                  click here to view the PDF
+                </a>
+                .
+              </p>
+            </iframe>
+          </object>
         </div>
       </div>
     </section>
