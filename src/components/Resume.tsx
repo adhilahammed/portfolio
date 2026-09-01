@@ -1,5 +1,5 @@
 import { Download, ExternalLink } from "lucide-react";
-import { personalInfo } from "../data/personalInfo";
+import { personalInfo, resumeLinks } from "../data/personalInfo";
 
 export default function Resume() {
   return (
@@ -15,8 +15,10 @@ export default function Resume() {
 
         <div className="resume-actions">
           <a
-            href={personalInfo.resumeFile}
-            download="Adhil_Ahammed_K_Resume.pdf"
+            href={resumeLinks.downloadUrl}
+            download={resumeLinks.isGoogleDrive ? undefined : "Adhil_Ahammed_K_Resume.pdf"}
+            target={resumeLinks.isGoogleDrive ? "_blank" : undefined}
+            rel={resumeLinks.isGoogleDrive ? "noopener noreferrer" : undefined}
             className="btn btn-primary"
             id="resume-download-btn"
           >
@@ -24,7 +26,7 @@ export default function Resume() {
             Download Resume
           </a>
           <a
-            href={personalInfo.resumeFile}
+            href={resumeLinks.viewUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="btn btn-outline"
@@ -36,28 +38,39 @@ export default function Resume() {
         </div>
 
         <div className="resume-embed">
-          <object
-            data={personalInfo.resumeFile}
-            type="application/pdf"
-            width="100%"
-            height="100%"
-            title="Adhil Ahammed K Resume"
-          >
+          {resumeLinks.isGoogleDrive ? (
             <iframe
-              src={personalInfo.resumeFile}
+              src={resumeLinks.previewUrl}
+              title="Adhil Ahammed K Resume"
+              width="100%"
+              height="100%"
+              allow="autoplay"
+            />
+          ) : (
+            <object
+              data={personalInfo.resumeFile}
+              type="application/pdf"
+              width="100%"
+              height="100%"
               title="Adhil Ahammed K Resume"
             >
-              <p>
-                Your browser does not support PDF embedding. Please{" "}
-                <a href={personalInfo.resumeFile} target="_blank" rel="noopener noreferrer">
-                  click here to view the PDF
-                </a>
-                .
-              </p>
-            </iframe>
-          </object>
+              <iframe
+                src={personalInfo.resumeFile}
+                title="Adhil Ahammed K Resume"
+              >
+                <p>
+                  Your browser does not support PDF embedding. Please{" "}
+                  <a href={personalInfo.resumeFile} target="_blank" rel="noopener noreferrer">
+                    click here to view the PDF
+                  </a>
+                  .
+                </p>
+              </iframe>
+            </object>
+          )}
         </div>
       </div>
     </section>
   );
 }
+
